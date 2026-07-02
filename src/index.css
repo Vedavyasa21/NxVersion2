@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- Global tokens ---------- */
+:root {
+  color-scheme: light;
+}
+
+html {
+  /* Buttery-smooth scrolling without a JS lib. Lenis can replace this later. */
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  background: #ffffff;
+  color: #0a0a0a;
+}
+
+/* Selection — keep on-brand. */
+::selection {
+  background: #D4A017;
+  color: #ffffff;
+}
+
+/* Display headlines use Space Grotesk. */
+.font-display {
+  font-family: 'Space Grotesk', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.04em;
+}
+
+/* Headline sizing — confident, generous. */
+h1,
+h2,
+h3 {
+  font-family: 'Space Grotesk', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.04em;
+  font-weight: 600;
+}
+
+/* ---------- Section divider gradient ---------- */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, #D4A017 50%, transparent 100%);
+  opacity: 0.3;
+}
+
+/* ---------- Ambient glow — reusable background accent ---------- */
+.ambient-glow {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(100px);
+  background: radial-gradient(circle, rgba(212,160,23,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ---------- Animated accent line ---------- */
+@keyframes lineExpand {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.accent-line-animated {
+  height: 2px;
+  background: linear-gradient(90deg, #D4A017, #F5C542, transparent);
+  transform-origin: left;
+  animation: lineExpand 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ---------- Concentric rings animation (contact) ---------- */
+@keyframes ringPulse {
+  0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.08; }
+  50% { opacity: 0.04; }
+  100% { transform: translate(-50%, -50%) scale(1.4); opacity: 0; }
+}
+
+.ring-pulse {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 9999px;
+  border: 1px solid #D4A017;
+  pointer-events: none;
+  animation: ringPulse 4s ease-out infinite;
+}
+
+/* Reduce motion respect — Framer Motion reads this implicitly, but belt + suspenders. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .accent-line-animated {
+    animation: none;
+    transform: scaleX(1);
+  }
+  .ring-pulse {
+    animation: none;
+  }
+}
+
+/* Hide scrollbar on mobile menu open — purely cosmetic. */
+body.menu-open {
+  overflow: hidden;
+}

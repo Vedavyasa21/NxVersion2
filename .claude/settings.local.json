@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(curl -s http://localhost:5173/ -o /dev/null -w \"HTTP %{http_code}\\\\n\")",
+      "Bash(curl -s http://localhost:5173/src/main.jsx -o /dev/null -w \"main.jsx HTTP %{http_code}\\\\n\")",
+      "Bash(curl -s http://localhost:5173/src/App.jsx -o /dev/null -w \"App.jsx HTTP %{http_code}\\\\n\")",
+      "Bash(curl -s http://localhost:5173/)",
+      "Bash(curl -s http://localhost:5173/src/App.jsx)",
+      "Bash(curl -s \"http://localhost:5173/src/components/Contact.jsx\")",
+      "Bash(curl -s \"http://localhost:5173/src/components/Services.jsx\")",
+      "Bash(curl -s \"http://localhost:5173/src/components/WhyAI.jsx\")",
+      "Bash(curl -s \"http://localhost:5173/src/components/three/HeroScene.jsx\")"
+    ]
+  }
+}
